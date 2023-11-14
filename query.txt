@@ -1,0 +1,40 @@
+SELECT
+
+Es. 1
+SELECT * FROM `students` WHERE YEAR(`date_of_birth`) = '1990';
+
+Es. 2
+SELECT * FROM `courses` WHERE `cfu` > 10;
+
+Es. 3
+SELECT * FROM `students` WHERE DATE_SUB(CURDATE(), INTERVAL 30 YEAR) > `date_of_birth`;
+
+Es. 4
+SELECT `name`, `period`, `year` FROM `courses` WHERE `year` = 1 AND `period` = 'I semestre';
+
+Es. 5
+SELECT * FROM `exams` WHERE `date` = '2020-06-20' AND `hour` >= '14:00:00';
+
+Es. 6
+SELECT * FROM `degrees` WHERE `level` = 'magistrale';
+
+Es. 7
+SELECT COUNT(`id`) AS `num_of_departments` FROM `departments`;
+
+Es. 8
+SELECT COUNT(`id`) AS `teachers_without_phone` FROM `teachers` WHERE `phone` IS NULL;
+
+
+GROUP BY
+
+Es. 1
+SELECT COUNT(*) AS `num_students`, YEAR(`enrolment_date`) AS `year_of_enrolment` FROM `students` GROUP BY `year_of_enrolment`;
+
+Es. 2
+SELECT COUNT(*) AS `num_teachers`, `office_address` FROM `teachers` GROUP BY `office_address`;
+
+Es. 3
+SELECT `exam_id`, AVG(`vote`) AS `average_vote` FROM `exam_student` GROUP BY `exam_id`;
+
+Es. 4
+SELECT `department_id`, COUNT(*) AS `num_courses` FROM `degrees` GROUP BY `department_id`;
